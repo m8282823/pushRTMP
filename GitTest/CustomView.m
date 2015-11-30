@@ -11,6 +11,7 @@
 @implementation CustomView
 {
     NSString *_name;
+    
 }
 
 - (void)dealloc
