@@ -13,4 +13,9 @@
     NSString *_name;
 }
 
+- (void)dealloc
+{
+    
+}
+
 @end
