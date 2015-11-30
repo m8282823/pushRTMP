@@ -14,7 +14,7 @@
 
 @implementation ViewController
 {
-
+    NSString *string;
 }
 
 - (void)viewDidLoad {
