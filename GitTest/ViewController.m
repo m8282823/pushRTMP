@@ -15,6 +15,7 @@
 @implementation ViewController
 {
     NSString *string;
+    UILabel *_label;
 }
 
 - (void)viewDidLoad {
