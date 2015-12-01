@@ -7,6 +7,7 @@
 //
 
 #import "GitMainViewController.h"
+#import "GitSubViewController.h"
 
 @interface GitMainViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +27,23 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(100, 200, 100, 100);
+    [button setTitle: @"点我直播" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor redColor];
+    [button addTarget:self action:@selector(nextVC) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
-*/
+
+- (void)nextVC
+{
+    GitSubViewController *sub = [[GitSubViewController alloc]init];
+    
+    [self.navigationController pushViewController:sub animated:YES];
+    
+}
+
 
 @end

@@ -8,15 +8,46 @@
 
 #import "GitBaseViewController.h"
 
-@interface GitBaseViewController ()
+@interface GitBaseViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
 @end
 
 @implementation GitBaseViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+
+    
+    self.interactivePopGestureRecognizer.enabled = NO;
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self.interactivePopGestureRecognizer.delegate action:@selector(handleNavigationTransition:)];
+    pan.delegate = self;
+    
+    [self.view addGestureRecognizer:pan];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+    if (self.childViewControllers.count != 0) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    }
+    [super pushViewController:viewController animated:animated];
+}
+
+- (void)back
+{
+    [self popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

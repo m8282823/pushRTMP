@@ -15,6 +15,7 @@
 		A75703E11C0D3D5E0072209D /* GitMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E01C0D3D5E0072209D /* GitMainViewController.m */; };
 		A75703E41C0D3D6B0072209D /* GitMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E31C0D3D6B0072209D /* GitMyViewController.m */; };
 		A75703E71C0D3DC90072209D /* GitMyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E61C0D3DC90072209D /* GitMyNavigationController.m */; };
+		A75703EA1C0D44590072209D /* GitSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E91C0D44590072209D /* GitSubViewController.m */; };
 		A7E342DB1C0C4855008EFD70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E342DA1C0C4855008EFD70 /* main.m */; };
 		A7E342E61C0C4855008EFD70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E342E51C0C4855008EFD70 /* Assets.xcassets */; };
 		A7E342E91C0C4855008EFD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E342E71C0C4855008EFD70 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,8 @@
 		A75703E31C0D3D6B0072209D /* GitMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMyViewController.m; sourceTree = "<group>"; };
 		A75703E51C0D3DC90072209D /* GitMyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitMyNavigationController.h; sourceTree = "<group>"; };
 		A75703E61C0D3DC90072209D /* GitMyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMyNavigationController.m; sourceTree = "<group>"; };
+		A75703E81C0D44590072209D /* GitSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitSubViewController.h; sourceTree = "<group>"; };
+		A75703E91C0D44590072209D /* GitSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitSubViewController.m; sourceTree = "<group>"; };
 		A7E342D61C0C4855008EFD70 /* GitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E342DA1C0C4855008EFD70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7E342E51C0C4855008EFD70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				A75703DA1C0D3D1A0072209D /* GitMainNavigationController.m */,
 				A75703DF1C0D3D5E0072209D /* GitMainViewController.h */,
 				A75703E01C0D3D5E0072209D /* GitMainViewController.m */,
+				A75703E81C0D44590072209D /* GitSubViewController.h */,
+				A75703E91C0D44590072209D /* GitSubViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				A75703E41C0D3D6B0072209D /* GitMyViewController.m in Sources */,
 				A75703E71C0D3DC90072209D /* GitMyNavigationController.m in Sources */,
 				A7E342DB1C0C4855008EFD70 /* main.m in Sources */,
+				A75703EA1C0D44590072209D /* GitSubViewController.m in Sources */,
 				A75703DB1C0D3D1A0072209D /* GitMainNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
