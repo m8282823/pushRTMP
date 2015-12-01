@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A75703BC1C0D38290072209D /* AppDelegate in Resources */ = {isa = PBXBuildFile; fileRef = A75703BA1C0D38290072209D /* AppDelegate */; };
-		A75703BD1C0D38290072209D /* Classes in Resources */ = {isa = PBXBuildFile; fileRef = A75703BB1C0D38290072209D /* Classes */; };
+		A75703CE1C0D3BA90072209D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703C81C0D3BA90072209D /* AppDelegate.m */; };
+		A75703D21C0D3C0C0072209D /* GitTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703D11C0D3C0C0072209D /* GitTabBarViewController.m */; };
+		A75703D81C0D3CD30072209D /* GitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703D71C0D3CD30072209D /* GitBaseViewController.m */; };
+		A75703DB1C0D3D1A0072209D /* GitMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703DA1C0D3D1A0072209D /* GitMainNavigationController.m */; };
+		A75703DE1C0D3D450072209D /* GitBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703DD1C0D3D450072209D /* GitBaseVC.m */; };
+		A75703E11C0D3D5E0072209D /* GitMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E01C0D3D5E0072209D /* GitMainViewController.m */; };
+		A75703E41C0D3D6B0072209D /* GitMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E31C0D3D6B0072209D /* GitMyViewController.m */; };
+		A75703E71C0D3DC90072209D /* GitMyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703E61C0D3DC90072209D /* GitMyNavigationController.m */; };
 		A7E342DB1C0C4855008EFD70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E342DA1C0C4855008EFD70 /* main.m */; };
 		A7E342E61C0C4855008EFD70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E342E51C0C4855008EFD70 /* Assets.xcassets */; };
 		A7E342E91C0C4855008EFD70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E342E71C0C4855008EFD70 /* LaunchScreen.storyboard */; };
 		A7E342F41C0C4855008EFD70 /* GitTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E342F31C0C4855008EFD70 /* GitTestTests.m */; };
 		A7E342FF1C0C4855008EFD70 /* GitTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E342FE1C0C4855008EFD70 /* GitTestUITests.m */; };
-		A7E343101C0C4D13008EFD70 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A7E3430F1C0C4D13008EFD70 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +40,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A75703BA1C0D38290072209D /* AppDelegate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppDelegate; sourceTree = "<group>"; };
-		A75703BB1C0D38290072209D /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
+		A75703C71C0D3BA90072209D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A75703C81C0D3BA90072209D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A75703D01C0D3C0C0072209D /* GitTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitTabBarViewController.h; sourceTree = "<group>"; };
+		A75703D11C0D3C0C0072209D /* GitTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitTabBarViewController.m; sourceTree = "<group>"; };
+		A75703D61C0D3CD30072209D /* GitBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitBaseViewController.h; sourceTree = "<group>"; };
+		A75703D71C0D3CD30072209D /* GitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitBaseViewController.m; sourceTree = "<group>"; };
+		A75703D91C0D3D1A0072209D /* GitMainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitMainNavigationController.h; sourceTree = "<group>"; };
+		A75703DA1C0D3D1A0072209D /* GitMainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMainNavigationController.m; sourceTree = "<group>"; };
+		A75703DC1C0D3D450072209D /* GitBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitBaseVC.h; sourceTree = "<group>"; };
+		A75703DD1C0D3D450072209D /* GitBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitBaseVC.m; sourceTree = "<group>"; };
+		A75703DF1C0D3D5E0072209D /* GitMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitMainViewController.h; sourceTree = "<group>"; };
+		A75703E01C0D3D5E0072209D /* GitMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMainViewController.m; sourceTree = "<group>"; };
+		A75703E21C0D3D6B0072209D /* GitMyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitMyViewController.h; sourceTree = "<group>"; };
+		A75703E31C0D3D6B0072209D /* GitMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMyViewController.m; sourceTree = "<group>"; };
+		A75703E51C0D3DC90072209D /* GitMyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitMyNavigationController.h; sourceTree = "<group>"; };
+		A75703E61C0D3DC90072209D /* GitMyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitMyNavigationController.m; sourceTree = "<group>"; };
 		A7E342D61C0C4855008EFD70 /* GitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E342DA1C0C4855008EFD70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7E342E51C0C4855008EFD70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,7 +67,6 @@
 		A7E342FA1C0C4855008EFD70 /* GitTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E342FE1C0C4855008EFD70 /* GitTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GitTestUITests.m; sourceTree = "<group>"; };
 		A7E343001C0C4855008EFD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7E3430F1C0C4D13008EFD70 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +94,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A75703C61C0D3BA90072209D /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				A75703C71C0D3BA90072209D /* AppDelegate.h */,
+				A75703C81C0D3BA90072209D /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		A75703CA1C0D3BA90072209D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A75703CB1C0D3BA90072209D /* Main */,
+				A75703CC1C0D3BA90072209D /* MY */,
+				A75703CD1C0D3BA90072209D /* TabbarController */,
+				A75703D61C0D3CD30072209D /* GitBaseViewController.h */,
+				A75703D71C0D3CD30072209D /* GitBaseViewController.m */,
+				A75703DC1C0D3D450072209D /* GitBaseVC.h */,
+				A75703DD1C0D3D450072209D /* GitBaseVC.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		A75703CB1C0D3BA90072209D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A75703D91C0D3D1A0072209D /* GitMainNavigationController.h */,
+				A75703DA1C0D3D1A0072209D /* GitMainNavigationController.m */,
+				A75703DF1C0D3D5E0072209D /* GitMainViewController.h */,
+				A75703E01C0D3D5E0072209D /* GitMainViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A75703CC1C0D3BA90072209D /* MY */ = {
+			isa = PBXGroup;
+			children = (
+				A75703E51C0D3DC90072209D /* GitMyNavigationController.h */,
+				A75703E61C0D3DC90072209D /* GitMyNavigationController.m */,
+				A75703E21C0D3D6B0072209D /* GitMyViewController.h */,
+				A75703E31C0D3D6B0072209D /* GitMyViewController.m */,
+			);
+			path = MY;
+			sourceTree = "<group>";
+		};
+		A75703CD1C0D3BA90072209D /* TabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				A75703D01C0D3C0C0072209D /* GitTabBarViewController.h */,
+				A75703D11C0D3C0C0072209D /* GitTabBarViewController.m */,
+			);
+			path = TabbarController;
+			sourceTree = "<group>";
+		};
 		A7E342CD1C0C4855008EFD70 = {
 			isa = PBXGroup;
 			children = (
-				A75703BA1C0D38290072209D /* AppDelegate */,
-				A75703BB1C0D38290072209D /* Classes */,
-				A7E3430F1C0C4D13008EFD70 /* Podfile */,
+				A75703C61C0D3BA90072209D /* AppDelegate */,
+				A75703CA1C0D3BA90072209D /* Classes */,
 				A7E342D81C0C4855008EFD70 /* GitTest */,
 				A7E342F21C0C4855008EFD70 /* GitTestTests */,
 				A7E342FD1C0C4855008EFD70 /* GitTestUITests */,
@@ -198,6 +269,7 @@
 		A7E342CE1C0C4855008EFD70 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Git;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "云尚互动";
 				TargetAttributes = {
@@ -244,9 +316,6 @@
 			files = (
 				A7E342E91C0C4855008EFD70 /* LaunchScreen.storyboard in Resources */,
 				A7E342E61C0C4855008EFD70 /* Assets.xcassets in Resources */,
-				A75703BD1C0D38290072209D /* Classes in Resources */,
-				A7E343101C0C4D13008EFD70 /* Podfile in Resources */,
-				A75703BC1C0D38290072209D /* AppDelegate in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +340,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A75703CE1C0D3BA90072209D /* AppDelegate.m in Sources */,
+				A75703D81C0D3CD30072209D /* GitBaseViewController.m in Sources */,
+				A75703E11C0D3D5E0072209D /* GitMainViewController.m in Sources */,
+				A75703D21C0D3C0C0072209D /* GitTabBarViewController.m in Sources */,
+				A75703DE1C0D3D450072209D /* GitBaseVC.m in Sources */,
+				A75703E41C0D3D6B0072209D /* GitMyViewController.m in Sources */,
+				A75703E71C0D3DC90072209D /* GitMyNavigationController.m in Sources */,
 				A7E342DB1C0C4855008EFD70 /* main.m in Sources */,
+				A75703DB1C0D3D1A0072209D /* GitMainNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
