@@ -306,13 +306,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     NSLog(@"捕获区域改变...");
 }
 
-//- (void)deviceConnected:(NSNotification *)notification{
-//    NSLog(@"设备已连接");
-//}
-//
-//- (void)deviceDisconnected:(NSNotification *)notification{
-//    NSLog(@"设备已断开");
-//}
 -(void)sessionRuntimeError:(NSNotification *)notification{
     NSLog(@"会话发生错误.");
 }
