@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "083DF0B7D896FDF56ECA5900B6E8DCAC1BF6011C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2278E18376EDF7EBB23D473AEDF7F13F6C1D168F" : 0,
+    "083DF0B7D896FDF56ECA5900B6E8DCAC1BF6011C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8DBD10A1-1038-49ED-92B5-10FE374DD266",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2278E18376EDF7EBB23D473AEDF7F13F6C1D168F" : "GitTest\/Pods\/",
+    "083DF0B7D896FDF56ECA5900B6E8DCAC1BF6011C" : "GitTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GitTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GitTest.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/192.168.1.234\/home\/git\/GitTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "083DF0B7D896FDF56ECA5900B6E8DCAC1BF6011C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/192.168.1.234\/home\/git\/Pods.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2278E18376EDF7EBB23D473AEDF7F13F6C1D168F"
+    }
+  ]
+}
