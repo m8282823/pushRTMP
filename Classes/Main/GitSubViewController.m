@@ -309,7 +309,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 -(void)sessionRuntimeError:(NSNotification *)notification{
     NSLog(@"会话发生错误.");
 }
-
+     
 #pragma mark - 私有方法 
 
 - (AVCaptureDevice *)getCameraDeviceWithPosition:(AVCaptureDevicePosition)position{
