@@ -40,6 +40,7 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
     BOOL _isRunning;     //录制状态
     BOOL _enableRotation; // 是否允许旋转
     CMTime _playTime;
+    NSInteger _testNumber;
 }
 
 - (instancetype)init
@@ -53,13 +54,23 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
     return self;
 }
 
+- (void)testTime
+{
+    NSLog(@"%li",_testNumber++);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //初始化摄像组件
-//    [self setupCaptureSession];
+    [self setupCaptureSession];
     
-//    [self setPreview];
+    NSTimer *time = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(testTime) userInfo:nil repeats:YES];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:time forMode:NSRunLoopCommonModes];
+    [time fire];
+    
+    [self setPreview];
     
     [self setPlayUI];
 }
@@ -122,7 +133,7 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
     }
     
     _captureSession = [[AVCaptureSession alloc]init];
-    if ([_captureSession canSetSessionPreset:AVCaptureSessionPreset1280x720]) {
+    if ([_captureSession canSetSessionPreset:AVCaptureSessionPreset352x288]) {
         [_captureSession setSessionPreset:AVCaptureSessionPresetMedium];
     }
     
@@ -234,7 +245,7 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
     
     _previewLayer.frame = _preview.bounds;
     [_preview.layer addSublayer:_previewLayer];
-    
+//    [self.view.layer addSublayer:_previewLayer];
     
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     _button.frame = CGRectMake(100, 200, 50, 60);
@@ -299,7 +310,7 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     
-    NSDictionary *dictionary = @{cmSampleBuffer:[NSValue value:&sampleBuffer withObjCType:@encode(CMSampleBufferRef)]};
+//    NSDictionary *dictionary = @{cmSampleBuffer:[NSValue value:&sampleBuffer withObjCType:@encode(CMSampleBufferRef)]};
 //    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(readDataToFile:) userInfo:dictionary repeats:YES];
 //    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 //    [runLoop addTimer:timer forMode:NSRunLoopCommonModes];
@@ -316,21 +327,20 @@ static NSString *const cmSampleBuffer = @"cmSampleBuffer";
     NSLog(@"%f",(unsigned long long)[dic fileSize] / 1024.0 / 1024.0);
 }
 
-- (void)readDataToFile:(NSTimer *)timer{
-    CMSampleBufferRef sampleBufferRef;
-    [[timer.userInfo valueForKey:cmSampleBuffer] getValue:&sampleBufferRef];
-    NSData *currentData = [self imageToBuffer: sampleBufferRef];
-    [self.outputData setData:currentData];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[self videoPath]]) {
-        [self.outputData writeToFile:[self videoPath] atomically:YES];
-    }else{
-        [[NSFileManager defaultManager] createFileAtPath:[self videoPath] contents:self.outputData attributes:nil];
-    }
-    
-    NSDictionary *dic = [[NSFileManager defaultManager]attributesOfItemAtPath:[self videoPath] error:nil];
-    NSLog(@"%f",(unsigned long long)[dic fileSize] / 1024.0 / 1024.0);
-//    NSLog(@"%lf",(unsigned long long)[[[NSFileManager defaultManager] attributesOfItemAtPath:[self videoPath] error:nil] fileSize]);
-}
+//- (void)readDataToFile:(NSTimer *)timer{
+//    CMSampleBufferRef sampleBufferRef;
+//    [[timer.userInfo valueForKey:cmSampleBuffer] getValue:&sampleBufferRef];
+//    NSData *currentData = [self imageToBuffer: sampleBufferRef];
+//    [self.outputData setData:currentData];
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:[self videoPath]]) {
+//        [self.outputData writeToFile:[self videoPath] atomically:YES];
+//    }else{
+//        [[NSFileManager defaultManager] createFileAtPath:[self videoPath] contents:self.outputData attributes:nil];
+//    }
+//    
+//    NSDictionary *dic = [[NSFileManager defaultManager]attributesOfItemAtPath:[self videoPath] error:nil];
+//    NSLog(@"%f",(unsigned long long)[dic fileSize] / 1024.0 / 1024.0);
+//}
 
 - (NSData *)imageToBuffer:(CMSampleBufferRef)sampleBufferRef
 {
