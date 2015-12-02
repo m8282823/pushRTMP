@@ -8,13 +8,21 @@
 
 #import "GitSubViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "MainMacro.h"
+#import "GitPlayerView.h"
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
+
+static NSString *const videoName = @"videoName";
+static NSString *const cmSampleBuffer = @"cmSampleBuffer";
 
 @interface GitSubViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic,strong)NSMutableData *outputData;
 
+@property (nonatomic,strong)AVPlayer *player;
+@property (nonatomic,strong)AVPlayerItem *item;
+@property (nonatomic,strong)UISlider *progress;
 
 @end
 
@@ -27,9 +35,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AVCaptureDeviceInput *_videoInput;
     AVCaptureVideoPreviewLayer *_previewLayer;
     AVCaptureVideoDataOutput *_videoOutput;
-
+    
+    
     BOOL _isRunning;     //录制状态
     BOOL _enableRotation; // 是否允许旋转
+    CMTime _playTime;
 }
 
 - (instancetype)init
@@ -47,9 +57,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //初始化摄像组件
-    [self setupCaptureSession];
+//    [self setupCaptureSession];
     
-    [self setPreview];
+//    [self setPreview];
+    
+    [self setPlayUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,6 +114,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AVCaptureDeviceInput *_videoInput;
     AVCaptureVideoPreviewLayer *_previewLayer;
     AVCaptureMetadataOutput *_metadataOutput;*/
+
     _videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     if (!_videoDevice) {
         NSLog(@"没有找到摄像头");
@@ -119,6 +132,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         [_captureSession addInput:_videoInput];
         
     }
+    
+    
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
@@ -130,8 +145,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 //    [_videoOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
 //    _videoDevice.activeVideoMinFrameDuration = CMTimeMake(1, 15);//  帧数/帧率==秒
     AVCaptureConnection *captureConnection = [_videoOutput connectionWithMediaType:AVMediaTypeVideo];
+    //设置预览图层和视频方向保持一致
+    captureConnection.videoOrientation = [_previewLayer connection].videoOrientation;
     if ([captureConnection isVideoStabilizationSupported]) {
-        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;//防抖
     }
     
     if ([_captureSession canAddOutput:_videoOutput]) {
@@ -140,7 +157,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     _enableRotation = NO;
 }
-
+#pragma mark -visitMethod
 - (void)forbidVisit{
     AVAuthorizationStatus authorizationStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     
@@ -212,7 +229,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 {
     _preview = nil;
     _button = nil;
-    _preview = [[UIView alloc]initWithFrame:self.view.frame];
+    _preview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0f)];
     [self.view addSubview:_preview];
     
     _previewLayer.frame = _preview.bounds;
@@ -220,7 +237,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
-    _button.frame = CGRectMake(100, 200, 100, 100);
+    _button.frame = CGRectMake(100, 200, 50, 60);
     [_button setTitle:@"切换摄像头" forState:UIControlStateNormal];
     _button.backgroundColor = [UIColor yellowColor];
     [_button addTarget:self action:@selector(changeVedio) forControlEvents:UIControlEventTouchUpInside];
@@ -255,10 +272,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self setPreview];
 }
 
-//- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
-//    [metadataObjects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {}];
-//}
-
 - (void)addNotificationToCaptureDevice:(AVCaptureDevice *)device{
     [self changeDeviceProperty:^(AVCaptureDevice *captureDevice) {
         captureDevice.subjectAreaChangeMonitoringEnabled = YES;
@@ -280,11 +293,43 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{}
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+
+}
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
-    NSData *currentData = [self imageToBuffer:sampleBuffer];
+    
+    NSDictionary *dictionary = @{cmSampleBuffer:[NSValue value:&sampleBuffer withObjCType:@encode(CMSampleBufferRef)]};
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(readDataToFile:) userInfo:dictionary repeats:YES];
+//    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+//    [runLoop addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    NSData *currentData = [self imageToBuffer: sampleBuffer];
     [self.outputData appendData:currentData];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self videoPath]]) {
+        [self.outputData writeToFile:[self videoPath] atomically:YES];
+    }else{
+        [[NSFileManager defaultManager] createFileAtPath:[self videoPath] contents:self.outputData attributes:nil];
+    }
+    
+    NSDictionary *dic = [[NSFileManager defaultManager]attributesOfItemAtPath:[self videoPath] error:nil];
+    NSLog(@"%f",(unsigned long long)[dic fileSize] / 1024.0 / 1024.0);
+}
+
+- (void)readDataToFile:(NSTimer *)timer{
+    CMSampleBufferRef sampleBufferRef;
+    [[timer.userInfo valueForKey:cmSampleBuffer] getValue:&sampleBufferRef];
+    NSData *currentData = [self imageToBuffer: sampleBufferRef];
+    [self.outputData setData:currentData];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self videoPath]]) {
+        [self.outputData writeToFile:[self videoPath] atomically:YES];
+    }else{
+        [[NSFileManager defaultManager] createFileAtPath:[self videoPath] contents:self.outputData attributes:nil];
+    }
+    
+    NSDictionary *dic = [[NSFileManager defaultManager]attributesOfItemAtPath:[self videoPath] error:nil];
+    NSLog(@"%f",(unsigned long long)[dic fileSize] / 1024.0 / 1024.0);
+//    NSLog(@"%lf",(unsigned long long)[[[NSFileManager defaultManager] attributesOfItemAtPath:[self videoPath] error:nil] fileSize]);
 }
 
 - (NSData *)imageToBuffer:(CMSampleBufferRef)sampleBufferRef
@@ -309,7 +354,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 -(void)sessionRuntimeError:(NSNotification *)notification{
     NSLog(@"会话发生错误.");
 }
-     
+
 #pragma mark - 私有方法 
 
 - (AVCaptureDevice *)getCameraDeviceWithPosition:(AVCaptureDevicePosition)position{
@@ -333,6 +378,38 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }
 }
 
-#pragma mark -observer
+#pragma mark -播放UI
+- (void)setPlayUI{
+    GitPlayerView *playerView = [[GitPlayerView alloc]initWithFrame:CGRectMake(kScreenWidth / 2.0, kScreenHeight / 2.0, kScreenWidth / 2.0, kScreenHeight / 2.0)];
+//    playerView.backgroundColor = [UIColor redColor];
+//    self.item = [[AVPlayerItem alloc]initWithAsset:[[AVAsset alloc]init]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:[self videoPath]]) {
+        [fileManager createFileAtPath:[self videoPath] contents:nil attributes:nil];
+    }
+    
+//    NSURL *videoUrl = [NSURL fileURLWithPath:[self videoPath]];
+//    AVAsset *asset = [AVAsset
+    
+//    self.item = [[AVPlayerItem alloc]initWithAsset:<#(nonnull AVAsset *)#>:videoUrl];
+    self.item = [[AVPlayerItem alloc]initWithURL:[NSURL URLWithString:@"http://192.168.1.234/test.mp4"]];
+   
+    self.player = [[AVPlayer alloc]initWithPlayerItem:self.item];
+    playerView.player = self.player;
+    [self.view addSubview:playerView];
+    [self.player play];
+}
+
+
+
+
+#pragma mark -filePath
+
+- (NSString *)videoPath{
+    NSString *homePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *filePath = [homePath stringByAppendingPathComponent:videoName];
+    return filePath;
+}
+
 
 @end

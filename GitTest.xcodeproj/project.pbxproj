@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A74806661C0E947600C5F45F /* GitPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A74806651C0E947600C5F45F /* GitPlayerView.m */; };
 		A75703CE1C0D3BA90072209D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703C81C0D3BA90072209D /* AppDelegate.m */; };
 		A75703D21C0D3C0C0072209D /* GitTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703D11C0D3C0C0072209D /* GitTabBarViewController.m */; };
 		A75703D81C0D3CD30072209D /* GitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A75703D71C0D3CD30072209D /* GitBaseViewController.m */; };
@@ -41,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A74806631C0E926B00C5F45F /* MainMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainMacro.h; sourceTree = "<group>"; };
+		A74806641C0E947600C5F45F /* GitPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitPlayerView.h; sourceTree = "<group>"; };
+		A74806651C0E947600C5F45F /* GitPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitPlayerView.m; sourceTree = "<group>"; };
 		A75703C71C0D3BA90072209D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A75703C81C0D3BA90072209D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A75703D01C0D3C0C0072209D /* GitTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitTabBarViewController.h; sourceTree = "<group>"; };
@@ -129,6 +133,9 @@
 				A75703E01C0D3D5E0072209D /* GitMainViewController.m */,
 				A75703E81C0D44590072209D /* GitSubViewController.h */,
 				A75703E91C0D44590072209D /* GitSubViewController.m */,
+				A74806641C0E947600C5F45F /* GitPlayerView.h */,
+				A74806651C0E947600C5F45F /* GitPlayerView.m */,
+				A74806631C0E926B00C5F45F /* MainMacro.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -346,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A75703CE1C0D3BA90072209D /* AppDelegate.m in Sources */,
+				A74806661C0E947600C5F45F /* GitPlayerView.m in Sources */,
 				A75703D81C0D3CD30072209D /* GitBaseViewController.m in Sources */,
 				A75703E11C0D3D5E0072209D /* GitMainViewController.m in Sources */,
 				A75703D21C0D3C0C0072209D /* GitTabBarViewController.m in Sources */,
